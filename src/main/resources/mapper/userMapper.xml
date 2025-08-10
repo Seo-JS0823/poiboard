@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poiboard.mapper.UserMapper">
+
+	<!-- Select 1개 -->
+	<select id="getUser" resultType="com.poiboard.domain.UserDTO">
+		SELECT
+			userid, passwd, username, email, point, indate
+		FROM
+			users
+		WHERE
+			userid = #{userid} AND
+			passwd = #{passwd}			
+	</select>
+	
+	<!-- Select 전부 -->
+	
+	<!-- Insert -->
+	<insert id="addUser">
+		INSERT INTO users
+			(userid, passwd, username, email)
+		VALUES
+			(#{userid}, #{passwd}, #{username}, #{email})
+	</insert>
+	
+	<!-- Update : email -->
+	
+	<!-- Update : password -->
+	
+	<!-- Delete : menuid -->
+	
+</mapper>

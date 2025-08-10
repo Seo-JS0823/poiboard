@@ -1,0 +1,85 @@
+@charset "UTF-8";
+main {
+	padding-top: 70px;
+	display: block;
+	width: 80%;
+	height: 50%;
+	margin: 0 auto;
+	margin-top: 20vh;
+	border-radius: 20px;
+}
+.userbox-form {
+	margin: auto;
+	width: 100%;
+	min-width: 700px;
+	max-width: 1000px;
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.65);
+	border-radius: 20px;
+}
+.userbox-form div {
+	display: flex;
+	width: 100%;
+	margin: 10px;
+	align-items: center;
+	justify-content: center;
+}
+.userbox-form div:first-child {
+	width: 50%;
+	min-width: 495px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	padding: 10px;
+	border-radius: 8px;
+	text-shadow:
+		0 0 5px #FFF,
+		0 0 10px #000,
+		0 0 15px #000,
+		0 0 25px #000;
+	font-size: 28px;
+	color: #FFF;
+}
+.userbox-form div:last-child {
+	justify-content: flex-end;
+}
+.userbox-form div p {
+	width: 15%;
+	padding: 10px;
+	margin: 5px;
+	background-color: rgba(13, 110, 253, 0.8);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	border-radius: 12px;
+	color: white;
+	letter-spacing: 2px;
+}
+.userbox-form div input {
+	height: 35px;
+	width: 60%;
+	margin-left: 10px;
+	padding-left: 12px;
+	border-style: none;
+	border-radius: 12px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	font-size: 15px;
+}
+.userbox-form div input:hover, .userbox-form div button:hover, .userbox-form div a:hover {
+	box-shadow: 0 0 10px rgba(255, 59, 59, 0.8);
+}
+.userbox-form div button,
+.userbox-form div a {
+	text-decoration: none;
+	margin-right: 115px;
+	padding: 10px 30px 10px 30px;
+	border-style: none;
+	border-radius: 12px;
+	background-color: #0D6EFD;
+	color: white;
+	font-size: 15px;
+	letter-spacing: 2px;
+}
+.userbox-form div a {
+	margin-right: 50px;
+}

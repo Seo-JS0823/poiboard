@@ -1,0 +1,117 @@
+@charset "UTF-8";
+main {
+	padding-top: 70px;
+	display: block;
+	width: 80%;
+	height: 50%;
+	margin: 0 auto;
+	margin-top: 15vh;
+	border-radius: 20px;
+	white-space: nowrap;
+}
+.menuadd-box {
+	margin: auto;
+	width: 70%;
+	min-width: 800px;
+	max-width: 1200px;
+	padding: 65px;
+	background-color: rgba(0, 0, 0, 0.65);
+	border-radius: 20px;
+}
+.menuadd-box div {
+	display: flex;
+	width: 100%;
+	margin: 12px;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+.menuadd-box div:first-child {
+	color: #0D6EFD;
+	font-size: 30px;
+	font-weight: bolder;
+	letter-spacing: 3px;
+}
+.menuadd-box div p {
+	width: 150px;
+	min-width: 120px;
+	line-height: 45px;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	margin-right: 30px;
+	background-color: #0D6EFD;
+	border-radius: 5px;
+}
+.menuadd-box div p:last-child:hover {
+	font-size: 22px;
+	text-shadow:
+		0 0 2px #FFF,
+		0 0 8px #FFF,
+		0 0 14px #0D6EFD,
+		0 0 25px #0D6FFF,
+		0 0 40px #0DFFFF;
+	box-shadow:
+		0 0 5px #0D6EFD,
+		0 0 10px #DDD,
+		0 0 15px #000;
+}
+.menuadd-box div input {
+	width: 50%;
+	min-width: 380px;
+	line-height: 42px;
+	vertical-align: middle;
+	padding-left: 12px;
+	margin-right: 30px;
+	font-size: 18px;
+	font-weight: bolder;
+	border-style: none;
+	border-radius: 5px;
+}
+
+/* MenuList Box - 메뉴 리스트들 */
+.menulist-box {
+	margin: auto;
+	margin-top: 30px;
+	width: 70%;
+	min-width: 800px;
+	max-width: 1200px;
+	padding: 65px;
+	color: white;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bolder;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-collapse: collapse;
+}
+.menulist-box th {
+	font-size: 18px;
+	letter-spacing: 3px;
+}
+.menulist-box th, .menulist-box tr, .menulist-box td {
+	border: 2px solid #0D6EFD;
+	padding: 10px;
+}
+.menulist-box td a {
+	text-decoration: none;
+	color: white;
+}
+.menulist-box td a:hover {
+	text-shadow:
+		0 0 2px #0D6EFD,
+		0 0 5px #0D6FFF,
+		0 0 10px #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poiboard.mapper.MenuMapper">
+	
+	<!-- 메뉴 추가 : 메뉴 이름만 입력 받아서 -->
+	<insert id="addMenu" parameterType="java.lang.String">
+		INSERT INTO
+			menus (menuid, menuseq, menuname)
+		SELECT
+			CONCAT('MENU', CONVERT(IFNULL(MAX(SUBSTRING(menuid, 5, 2)), 0), UNSIGNED) + 1) AS menuid,
+			IFNULL(CONVERT(MAX(menuseq) + 1, UNSIGNED), 1) AS menuseq,
+			#{menuname}
+		FROM
+			menus
+	</insert>
+	
+	<!-- 전체 메뉴 조회 : 리턴은 List<MenuDTO> -->
+	<select id="getMenuList" resultType="com.poiboard.domain.MenuDTO">
+		SELECT
+			menuid, menuseq, menuname
+		FROM
+			menus
+	</select>
+	
+	<!-- 단일 메뉴 조회 : 리턴은 MenuDTO -->
+	
+	
+	<!-- 메뉴 이름 수정 : 수정가능한 항목은 menuname -->
+	
+	
+	<!-- 메뉴 삭제 : 게시글이 존재하면 어떻게...? -->
+	
+	
+</mapper>
