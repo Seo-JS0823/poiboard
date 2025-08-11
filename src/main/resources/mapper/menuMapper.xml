@@ -5,8 +5,8 @@
 	
 	<!-- 메뉴 추가 : 메뉴 이름만 입력 받아서 -->
 	<insert id="addMenu" parameterType="java.lang.String">
-		INSERT INTO
-			menus (menuid, menuseq, menuname)
+		INSERT INTO menus
+			(menuid, menuseq, menuname)
 		SELECT
 			CONCAT('MENU', CONVERT(IFNULL(MAX(SUBSTRING(menuid, 5, 2)), 0), UNSIGNED) + 1) AS menuid,
 			IFNULL(CONVERT(MAX(menuseq) + 1, UNSIGNED), 1) AS menuseq,
@@ -24,12 +24,32 @@
 	</select>
 	
 	<!-- 단일 메뉴 조회 : 리턴은 MenuDTO -->
-	
+	<select id="getMenu" resultType="com.poiboard.domain.MenuDTO">
+		SELECT
+			menuid, menuseq, menuname
+		FROM
+			menus
+		WHERE
+			menuid = #{menuid}
+	</select>
 	
 	<!-- 메뉴 이름 수정 : 수정가능한 항목은 menuname -->
+	<update id="updateMenuname">
+		UPDATE
+			menus
+		SET
+			menuname = #{menuname}
+		WHERE
+			menuid = #{menuid}
+	</update>
 	
-	
-	<!-- 메뉴 삭제 : 게시글이 존재하면 어떻게...? -->
+	<!-- 메뉴 삭제 : 게시글이 존재하면 어떻게...? 일단 나중에 생각하고 -->
+	<delete id="deleteMenu">
+		DELETE FROM
+			menus
+		WHERE
+			menuid = #{menuid}
+	</delete>
 	
 	
 </mapper>

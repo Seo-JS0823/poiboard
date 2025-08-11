@@ -15,6 +15,7 @@ public class MenuDTO {
 		this.menuid = menuid;
 		this.menuname = menuname;
 		this.menuseq = menuseq;
+		this.contentCount = contentCount;
 	}
 	
 	/* Getter 영역 */
@@ -54,7 +55,8 @@ public class MenuDTO {
 	/* toString */
 	@Override
 	public String toString() {
-		return "{\"menuid\":\"" + this.menuid + "\",\"menuname\":\"" + this.menuname + "\",\"menuseq\":\"" + this.menuseq + "\",\"contentCount:\":\"" + this.contentCount + "\"}";
+		return "MenuDTO [menuid=" + menuid + ", menuname=" + menuname + ", menuseq=" + menuseq + ", contentCount="
+				+ contentCount + "]";
 	}
 	
 	/* hashCode */

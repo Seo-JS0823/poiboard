@@ -15,6 +15,15 @@
 	</select>
 	
 	<!-- Select 전부 -->
+	<select id="getUserList" resultType="com.poiboard.domain.UserDTO">
+		SELECT
+			userid, passwd, username, email, point, indate
+		FROM
+			users
+		WHERE
+			userid = #{userid} AND
+			passwd = #{passwd}
+	</select>
 	
 	<!-- Insert -->
 	<insert id="addUser">
@@ -25,9 +34,35 @@
 	</insert>
 	
 	<!-- Update : email -->
+	<update id="updateEmail">
+		UPDATE
+			users
+		SET
+			email = #{email}
+		WHERE
+			userid = #{userid} AND
+			passwd = #{passwd}
+	</update>
 	
-	<!-- Update : password -->
+	<!-- Update : password : 새로운 변수값 = newPasswd -->
+	<update id="updatePassword">
+		UPDATE
+			users
+		SET
+			passwd = #{newPasswd}
+		WHERE
+			userid = #{userid} AND
+			passwd = #{passwd}
+	</update>
 	
 	<!-- Delete : menuid -->
+	<delete id="deleteUser">
+		DELETE FROM
+			users
+		WHERE
+			userid = #{userid} AND
+			passwd = #{passwd}
+	</delete>
+	
 	
 </mapper>

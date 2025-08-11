@@ -6,7 +6,6 @@ main {
 	margin-bottom: 100px;
 	padding: 10px;
 	width: 60%;
-	height: 100pc;
 	max-width: 1150px;
 	min-width: 1150px;
 	justify-content: space-between;
@@ -17,29 +16,33 @@ main {
 	width: 100%;
 	margin-left: 4px;
 	
-	background-color: pink;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
-/* 오른쪽 사이드 영역 */
+/* 왼쪽 사이드 영역 */
 .container-rside {
 	width: 20%;
 	max-width: 270px;
 	min-width: 270px;
 }
 
-/* 오른쪽 사이드 영역 안 유저 정보 영역 */
+/* 왼쪽 사이드 영역 안 유저 정보 영역 */
 .rside-user {
 	height: 30%;
 	max-height: 350px;
-	background-color: rgba(219, 255, 213);
+	min-height: 350px;
+	background-color: rgba(219, 255, 213, 0.7);
 	margin-bottom: 4px;
+	padding: 5px;
 }
 
-/* 오른쪽 사이드 영역 안 유저 정보 영역 밑 임시 영역 */
+/* 왼쪽 사이드 영역 안 유저 정보 영역 밑 임시 영역 */
 .rside-content {
 	height: 70%;
-	max-height: 1000px;
-	background-color: rgba(219, 255, 213);
+	max-height: 50%;
+	min-height: 600px;
+	background-color: rgba(219, 255, 213, 0.7);
+	padding: 5px;
 }
 
 

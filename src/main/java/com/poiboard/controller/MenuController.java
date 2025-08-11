@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poiboard.domain.MenuDTO;
-import com.poiboard.domain.UserDTO;
 import com.poiboard.mapper.MenuMapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -32,7 +31,7 @@ public class MenuController {
 		/* 관리자가 아니라면 에러 페이지로 보낸다. */
 		if(isAdmin == null || !isAdmin) {
 			
-			return "";
+			return "error/access";
 		}
 		
 		/* 메뉴 리스트 불러오기 */
@@ -40,6 +39,10 @@ public class MenuController {
 		
 		/* 모델에 담기 */
 		model.addAttribute("menuList", menuList);
+		
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		
+		model.addAttribute("menus", menus);
 		
 		/* if문에 안 걸러지면 관리자이니까 메뉴추가 폼을 보여준다. */
 		return "menus/addmenu";
@@ -55,34 +58,52 @@ public class MenuController {
 		
 		/* 관리자가 아니라면 에러 페이지로 보낸다. */
 		if(isAdmin == null || !isAdmin) {
+			session.invalidate();
 			
-			return "";
+			return "error/access";
 		}
 		
 		return "redirect:/menu/addForm";
 	}
 	
-	/* 일반 사용자도 볼 수 있는 메뉴 목록 */
-	@GetMapping("/list")
-	public String menuList(HttpSession session,Model model) {
+	/* 메뉴 업데이트 폼 보여주기 */
+	@GetMapping("/upd")
+	public String menuUpdateForm(@RequestParam("menuid") String menuid, Model model, HttpSession session) {
+		/* 메뉴 추가는 관리자만 할 수 있으니 관리자 인지 검증한다. */
+		Boolean isAdmin = (Boolean) session.getAttribute("admin");
 		
-		/* 로그인해야 볼 수 있게 Session으로 사용자를 검사한다. */
-		UserDTO user = (UserDTO) session.getAttribute("loginUser");
-		
-		/* 로그인하지 않았으면 볼 수 없다. 누가 로그인을 했던 중요하지 않고
-		 * 단지 로그인했다는 사실이 중요하다고 생각해서 null 체크만 했다. 
-		 */
-		if(user == null) {
-			model.addAttribute("menuSee", "메뉴 목록은 로그인해야 볼 수 있습니다.");
+		/* 관리자가 아니라면 에러 페이지로 보낸다. */
+		if(isAdmin == null || !isAdmin) {
+			session.invalidate();
 			
-			return "login";
+			return "error/access";
 		}
 		
-		List<MenuDTO> menuList = menuMapper.getMenuList();
+		/* 상단 헤더에 보여줄 메뉴 목록 가져오기 */
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		model.addAttribute("menus", menus);
 		
-		model.addAttribute("menuList", menuList);
+		/* 업데이트 할 메뉴 아이디 히든 태그에 추가하기 */
+		model.addAttribute("menuid", menuid);
 		
-		return "menus/menulist";
+		return "menus/menuupdate";
+	}
+	
+	/* 메뉴 업데이트 로직 */
+	@PostMapping("/update_run")
+	public String menuUpdateRun(@RequestParam("menuid") String menuid, @RequestParam("menuname") String menuname) {
+		
+		menuMapper.updateMenuname(menuid, menuname);
+		
+		return "redirect:/admin/on";
+	}
+	
+	/* 메뉴 삭제 로직 */
+	@GetMapping("/del")
+	public String menuDelete(@RequestParam("menuid") String menuid) {
+		menuMapper.deleteMenu(menuid);
+		
+		return "redirect:/menu/addForm";
 	}
 	
 }

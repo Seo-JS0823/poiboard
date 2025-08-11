@@ -1,12 +1,16 @@
 package com.poiboard.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.poiboard.domain.MenuDTO;
 import com.poiboard.domain.UserDTO;
+import com.poiboard.mapper.MenuMapper;
 import com.poiboard.mapper.UserMapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,9 +22,16 @@ public class UserController {
 	@Autowired
 	private UserMapper userMapper;
 	
+	@Autowired
+	private MenuMapper menuMapper;
+	
 	/* 회원가입 폼 */
 	@GetMapping("/signinForm")
-	public String signinForm() {
+	public String signinForm(Model model) {
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		
+		model.addAttribute("menus", menus);
+		
 		return "signin";
 	}
 	
@@ -36,6 +47,10 @@ public class UserController {
 	/* 로그인 로직 */
 	@PostMapping("/login")
 	public String login(UserDTO user, HttpSession session, Model model) {
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		
+		model.addAttribute("menus", menus);
+		
 		UserDTO target = userMapper.getUser(user);
 		
 		/* 로그인에 실패하면 보낼 로그인 재시도 페이지 */
@@ -59,7 +74,7 @@ public class UserController {
 		}
 		
 		/* 로그인하면 보여줄 페이지 */
-		return "home/poi";
+		return "redirect:/poi";
 	}
 	
 	/* 로그아웃 로직 */

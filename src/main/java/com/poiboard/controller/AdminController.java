@@ -24,12 +24,14 @@ public class AdminController {
 		 * 그것을 감싼 래퍼타입인 Boolean 클래스를 사용해야 한다.
 		 */
 		if(isAdmin == null || !isAdmin || !admin.getUserid().equals("poiadmin")) {
+			session.invalidate();
 			
 			/* 관리자가 아닌 경우 로그인 페이지로 보낸다. */
-			return "redirect:/";
+			return "redirect:/error/access";
 		}
 		
 		/* 저 if 조건에 해당하지 않으면 관리자라는게 확실하니 바로 admin.jsp 페이지를 보여준다. */
+		
 		return "admin";
 	}
 	

@@ -11,12 +11,18 @@
 </head>
 <body>
 <!-- Header 영역 -->
-<%@ include file="../header.jsp" %>
+<jsp:include page="../header.jsp">
+	<jsp:param name="menus" value="${menus}"/>
+</jsp:include>
 
 <!-- main 영역 -->
 <main>
 	<div class="container-rside">
 		<div class="rside-user">
+			<c:if test="${not empty target}">
+				<p>아이디</p><p>${target.userid}</p>
+				<label>성함</label><p>${target.username}</p>
+			</c:if>
 			<a href="/logout">로그아웃</a>
 		</div>
 		<div class="rside-content">

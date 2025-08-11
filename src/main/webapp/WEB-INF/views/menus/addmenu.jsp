@@ -11,7 +11,9 @@
 </head>
 <body>
 <!-- Header 영역 -->
-<%@ include file="../header.jsp" %>
+<jsp:include page="../header.jsp">
+	<jsp:param name="menus" value="${menus}"/>
+</jsp:include>
 
 <!-- main 영역 -->
 <main>

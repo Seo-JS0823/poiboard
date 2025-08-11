@@ -11,7 +11,9 @@
 </head>
 <body>
 <!-- Header 영역 -->
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp">
+	<jsp:param name="menus" value="${menus}"/>
+</jsp:include>
 
 <!-- Main 영역 -->
 <main>
@@ -32,7 +34,8 @@
 			<p>비밀번호</p><input type="password" name="passwd" placeholder="비밀번호를 입력해주세요."/>
 		</div>
 		<div>
-			<a href="/signinForm">회원가입</a><button type="submit">로그인</button>
+			<a href="/signinForm">회원가입</a>
+			<button type="submit">로그인</button>
 		</div>
 	</form>
 </main>

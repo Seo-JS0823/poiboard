@@ -87,26 +87,15 @@ public class UserDTO {
 	public Date getIndate() {
 		return this.indate;
 	}
-
+		
 	@Override
 	public String toString() {
-		return "[userid=" + userid + ",passwd=" + passwd + ",username=" + username + ",email=" + email
-				+ ",point=" + point + ",indate=" + indate + "]";
+		return "UserDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", email=" + email
+				+ ", point=" + point + ", indate=" + indate + "]";
 	}
-	
+
 	public String sendJsonData() {
 		return toString().replace("[", "{\"").replaceAll("=", "\":\"").replaceAll(",", "\",\"").replace("]", "\"}");
-	}
-	
-	public static void main(String[] args) {
-		UserDTO dto = new UserDTO();
-		dto.setUserid("USERID01");
-		dto.setPasswd("PASSWD01");
-		dto.setUsername("USNAME01");
-		dto.setEmail("EMAIL@java.com");
-		dto.setPoint(1000);
-		dto.setIndate(Date.valueOf("2025-08-09"));
-		System.out.println(dto.sendJsonData());
 	}
 	
 }
