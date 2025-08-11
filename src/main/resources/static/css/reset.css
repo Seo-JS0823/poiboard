@@ -27,8 +27,8 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	background-image: url("/images/main_body.jpg");
-	background-repeat: no-repeat;
+	background-image: url("/images/image008.jpg");
+	background-repeat: repeat;
 	background-position: center;
 	background-size: cover;
     line-height: 1;

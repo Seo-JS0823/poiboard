@@ -1,0 +1,49 @@
+@charset "UTF-8";
+main {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 40vh;
+	margin-bottom: 100px;
+	padding: 10px;
+	width: 60%;
+	height: 100pc;
+	max-width: 1150px;
+	min-width: 1150px;
+	justify-content: space-between;
+}
+
+/* 메인 콘텐츠 영역 */
+.container-content {
+	width: 100%;
+	margin-left: 4px;
+	
+	background-color: pink;
+}
+
+/* 오른쪽 사이드 영역 */
+.container-rside {
+	width: 20%;
+	max-width: 270px;
+	min-width: 270px;
+}
+
+/* 오른쪽 사이드 영역 안 유저 정보 영역 */
+.rside-user {
+	height: 30%;
+	max-height: 350px;
+	background-color: rgba(219, 255, 213);
+	margin-bottom: 4px;
+}
+
+/* 오른쪽 사이드 영역 안 유저 정보 영역 밑 임시 영역 */
+.rside-content {
+	height: 70%;
+	max-height: 1000px;
+	background-color: rgba(219, 255, 213);
+}
+
+
+
+
+
+

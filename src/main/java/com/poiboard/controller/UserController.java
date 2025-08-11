@@ -59,7 +59,17 @@ public class UserController {
 		}
 		
 		/* 로그인하면 보여줄 페이지 */
-		return "redirect:/poi";
+		return "home/poi";
+	}
+	
+	/* 로그아웃 로직 */
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		/* 세션 삭제 */
+		session.invalidate();
+		
+		/* 로그아웃 하면 보여줄 루트 컨텍스트 */
+		return "redirect:/";
 	}
 	
 }
