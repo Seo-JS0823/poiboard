@@ -10,5 +10,6 @@
 	<h2>난 관리자라우</h2>
 	<a href="/admin/out">로그아웃</a>
 	<a href="/menu/addForm">메뉴 추가</a>
+	<a href="/admin/userList">유저 리스트</a>
 </body>
 </html>

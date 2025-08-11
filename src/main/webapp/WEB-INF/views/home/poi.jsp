@@ -20,13 +20,21 @@
 	<div class="container-rside">
 		<div class="rside-user">
 			<c:if test="${not empty target}">
-				<p>아이디</p><p>${target.userid}</p>
-				<label>성함</label><p>${target.username}</p>
+				<div><label>아이디</label>${target.userid}</div>
+				<div><label>닉네임</label>${target.username}</div>
+				<div><label>이메일</label>${target.email}</div>
+				<div><label>point</label>${target.point}</div>
 			</c:if>
-			<a href="/logout">로그아웃</a>
+			<div>
+				<a href="/logout">로그아웃</a>
+			</div>
 		</div>
 		<div class="rside-content">
-			임시 영역
+			<label>이달의 우수 사진</label>
+			<img src="/images/image009.jpg"/>
+			<img src="/images/image010.jpg"/>
+			<img src="/images/image012.jpg"/>
+			<img src="/images/image003.jpg"/>
 		</div>
 	</div>
 	<div class="container-content">

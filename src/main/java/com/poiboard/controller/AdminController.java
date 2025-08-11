@@ -1,16 +1,29 @@
 package com.poiboard.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.poiboard.domain.MenuDTO;
 import com.poiboard.domain.UserDTO;
+import com.poiboard.mapper.MenuMapper;
+import com.poiboard.mapper.UserMapper;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+	@Autowired
+	private MenuMapper menuMapper;
+	
+	@Autowired
+	private UserMapper userMapper;
 	
 	@GetMapping("/on")
 	public String adminOn(HttpSession session) {
@@ -42,6 +55,34 @@ public class AdminController {
 		
 		/* 어드민 로그아웃 시 로그인 페이지로 보낸다. */
 		return "redirect:/";
+	}
+	
+	/* 관리자 기능 [유저 목록 관리] */
+	@GetMapping("/userList")
+	public ModelAndView userList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+
+		/* 관리자임을 판단하기위해 UserController 에서 넣었던 admin 세션을 받아오자. */
+		Boolean isAdmin = (Boolean) session.getAttribute("admin");
+		UserDTO admin = (UserDTO) session.getAttribute("loginUser");
+		
+		/* 관리자가 아닐 시 보낼 페이지 */
+		if(isAdmin == null || !isAdmin || !admin.getUserid().equals("poiadmin")) {
+			session.invalidate();
+			
+			/* 관리자가 아닌 경우 로그인 페이지로 보낸다. */
+			mav.setViewName("error/access");
+			return mav;
+		}
+		
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		List<UserDTO> users = userMapper.getUserList();
+		
+		
+		mav.addObject("users", users);
+		mav.addObject("menus", menus);
+		mav.setViewName("users/userlist");
+		return mav;
 	}
 	
 }

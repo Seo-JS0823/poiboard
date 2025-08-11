@@ -18,7 +18,11 @@
 <!-- main 영역 -->
 <main>
 	<form class="menuadd-box" action="/menu/add" method="post">
-		<div>관리자 기능 [메뉴 추가]</div>
+		<div>
+			<a href="/admin/on">관리자 홈</a>
+			관리자 기능 [메뉴 추가]
+			<a href="/admin/userList">유저 리스트</a>
+		</div>
 		<div>
 			<p>메뉴 이름</p>
 			<input type="text" name="menuname" placeholder="메뉴이름을 입력해주세요."/>
@@ -53,9 +57,20 @@
 </main>
 <script>
 	const addEl = document.querySelector('[id=add]');
+	const menuname = document.querySelector('[name=menuname]');
 	
-	addEl.addEventListener('click', function() {
-		document.querySelector('form').submit();
+	addEl.addEventListener('click', function(e) {
+		
+		if(menuname.value.trim() == '') {
+			alert('관리자씨? 메뉴를 입력을 해야 추가가 되겠지?');
+			
+			e.preventDefault();
+			
+			return false;
+		} else {
+			document.querySelector('form').submit();			
+		}
+		
 	});
 </script>
 </body>

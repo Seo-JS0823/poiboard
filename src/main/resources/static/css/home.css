@@ -2,19 +2,21 @@
 main {
 	display: flex;
 	margin: 0 auto;
-	margin-top: 40vh;
+	margin-top: 200px;
 	margin-bottom: 100px;
 	padding: 10px;
-	width: 60%;
-	max-width: 1150px;
-	min-width: 1150px;
-	justify-content: space-between;
+	width: 80%;
+	justify-content: center;
 }
 
 /* 메인 콘텐츠 영역 */
 .container-content {
-	width: 100%;
+	min-width: 900px;
+	max-width: 900px;
 	margin-left: 4px;
+	
+	height: auto;
+	min-height: 2000px;
 	
 	background-color: rgba(255, 255, 255, 0.7);
 }
@@ -29,23 +31,79 @@ main {
 /* 왼쪽 사이드 영역 안 유저 정보 영역 */
 .rside-user {
 	height: 30%;
-	max-height: 350px;
-	min-height: 350px;
-	background-color: rgba(219, 255, 213, 0.7);
+	min-height: 400px;
+	background-color: rgba(255, 255, 255, 0.7);
 	margin-bottom: 4px;
 	padding: 5px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
+.rside-user div:last-child {
+	margin-top: auto;
+	text-align: left;
+	background: none;
+	
+}
+
+.rside-user a {
+	text-decoration: none;
+	padding: 5px 15px 5px 15px;
+	background-color: black;
+	color: white;
+	border-radius: 12px;
+}
+
+.rside-user a:hover {
+	text-shadow:
+		0 0 5px #FFF,
+		0 0 10px #BBB,
+		0 0 15px #999;
+}
+
+.rside-user div {
+	background-color: white;
+	border-radius: 12px;
+	margin-bottom: 10px;
+	padding: 10px;
+	align-items: center;
+	font-weight: 600;
+}
+
+.rside-user label {
+	display: inline-block;
+	width: 70px;
 }
 
 /* 왼쪽 사이드 영역 안 유저 정보 영역 밑 임시 영역 */
 .rside-content {
+	width: 100%;
 	height: 70%;
-	max-height: 50%;
-	min-height: 600px;
-	background-color: rgba(219, 255, 213, 0.7);
+	max-height: 1200px;
+	background-color: rgba(255, 255, 255, 0.7);
 	padding: 5px;
+	text-align: center;
 }
 
+.rside-content img {
+	width: 100%;
+	margin-bottom: 3px;
+	object-fit: contain;
+	border: 1px solid black;
+}
 
+.rside-content label {
+	width: 100%;
+	display: inline-block;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 12px;
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
 
 
 

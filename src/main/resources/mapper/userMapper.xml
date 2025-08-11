@@ -20,9 +20,6 @@
 			userid, passwd, username, email, point, indate
 		FROM
 			users
-		WHERE
-			userid = #{userid} AND
-			passwd = #{passwd}
 	</select>
 	
 	<!-- Insert -->

@@ -1,5 +1,7 @@
 package com.poiboard.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.poiboard.domain.UserDTO;
@@ -23,6 +25,7 @@ public interface UserMapper {
 	SELECT(ALL) : getUserList
 	사용자 전부 검색
 	*/
+	List<UserDTO> getUserList();
 	
 	/*
 	UPDATE(passwd) : updatePasswd

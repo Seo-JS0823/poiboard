@@ -26,6 +26,22 @@ main {
 	justify-content: center;
 	padding: 20px;
 }
+.menuadd-box div a {
+	text-decoration: none;
+	margin-left: 7px;
+	margin-right: 7px;
+	color: white;
+	background-color: black;
+	padding: 12px;
+	border-radius: 12px;
+	font-size: 17px;
+}
+.menuadd-box div a:hover {
+	text-shadow:
+		0 0 5px #FFF,
+		0 0 10px #FFF,
+		0 0 13px #AAA;
+}
 .menuadd-box div:first-child {
 	color: #0D6EFD;
 	font-size: 30px;
