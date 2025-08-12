@@ -8,11 +8,12 @@
 		INSERT INTO menus
 			(menuid, menuseq, menuname)
 		SELECT
-			CONCAT('MENU', CONVERT(IFNULL(MAX(SUBSTRING(menuid, 5, 2)), 0), UNSIGNED) + 1) AS menuid,
+			CONCAT('MENU', CONVERT(IFNULL(MAX(CONVERT(SUBSTRING(menuid, 5, 2), UNSIGNED)), 0), UNSIGNED) + 1) AS menuid,
 			IFNULL(CONVERT(MAX(menuseq) + 1, UNSIGNED), 1) AS menuseq,
 			#{menuname}
 		FROM
 			menus
+		ORDER BY menuseq ASC
 	</insert>
 	
 	<!-- 전체 메뉴 조회 : 리턴은 List<MenuDTO> -->
@@ -21,6 +22,7 @@
 			menuid, menuseq, menuname
 		FROM
 			menus
+		ORDER BY menuseq ASC
 	</select>
 	
 	<!-- 단일 메뉴 조회 : 리턴은 MenuDTO -->
