@@ -33,8 +33,15 @@
 			title Like CONCAT('%',#{search},'%')
 	</select>
 	
-	<!-- select 1 : title에 해당하는 board, user, menu까지 다 알려줄수 있게 -->
-	
+	<!-- select 1 : idx에 해당하는 content 까지 검색 -->
+	<select id="getIdxContent" resultType="com.poiboard.domain.BoardDTO" parameterType="int">
+		SELECT
+			idx, title, content, writer, regdate, hit
+		FROM
+			board
+		WHERE
+			idx = #{idx}
+	</select>
 	
 	
 	<!-- insert 게시글 한 건 추가 -->
@@ -45,8 +52,15 @@
 			(#{menuid}, #{title}, #{content}, #{writer})
 	</insert>
 
-	<!--  -->
-
+	<!-- update 게시글 클릭하면 조회수 1증가 올라가기 -->
+	<update id="hitUp">
+		UPDATE
+			board
+		SET
+			hit = #{hit}
+		WHERE
+			idx = #{idx}
+	</update>
 
 	<!--  -->
 	

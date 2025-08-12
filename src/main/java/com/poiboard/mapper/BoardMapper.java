@@ -19,10 +19,11 @@ public interface BoardMapper {
 	/* 제목 검색으로 게시글 목록 가져오기 */
 	List<BoardDTO> searchTitle(@Param("search") String search);
 	
-	/*  */
+	/* idx 번호로 게시글 콘텐츠까지 가져오기 */
+	BoardDTO getIdxContent(@Param("idx") int idx);
 	
-	
-	/*  */
+	/* 게시글 누르면 조회수 증가하기 */
+	void hitUp(BoardDTO boardDto);
 	
 	
 }

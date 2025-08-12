@@ -1,0 +1,86 @@
+@charset "UTF-8";
+main {
+	margin-bottom: 0;
+	height: auto;
+}
+
+.content-main-box {
+	min-width: 900px;
+	max-width: 900px;
+	margin-left: 4px;
+	
+	padding: 10px 20px 10px 20px;
+	
+	min-height: 2000px;
+	
+	background-color: rgba(255, 255, 255, 0.7);
+	
+	border: 1px solid black;
+}
+
+.content-main-box div {
+	width: 100%;
+	line-height: 50px;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 5px;
+	padding-left: 15px;
+	margin-bottom: 3px;
+	
+	text-align: center;
+	
+	border-radius: 12px;
+	
+	label {
+		display: inline-block;
+		text-align: left;
+		color: white;
+		
+		width: 10%;
+	}
+	
+	div {
+		display: inline-block;
+		width: 20%;
+		padding: 0;
+		text-align: center;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 1);
+		
+		margin-right: 5px;
+		
+	}
+	
+}
+
+.content-main-box div:first-child {
+	width: 100%;
+	line-height: 50px;
+	background-color: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 3px;
+	
+	color: white;
+	
+	font-size: 20px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	
+	border-radius: 12px;
+}
+
+.content-main-box textarea {
+	display: inline-block;
+	border-radius: 12px;
+	
+	width: 100%;
+	border-style: none;
+	
+	padding: 10px;
+	
+	resize: none;
+	outline: none;
+	
+	font-size: 16px;
+	min-height: 2000px;
+}

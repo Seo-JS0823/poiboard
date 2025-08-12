@@ -4,10 +4,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/home.css">
+	<title>Insert title here</title>
 </head>
 <style>
 	
@@ -62,7 +62,7 @@
 		<c:forEach var="board" items="${boards}">
 			<tr>
 				<td>${board.idx}</td>
-				<td>${board.title}</td>
+				<td><a href="/board/content?idx=${board.idx}">${board.title}</a></td>
 				<td>${board.writer}</td>
 				<td>${board.regdate}</td>
 				<td>${board.hit}</td>

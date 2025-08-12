@@ -12,6 +12,7 @@ import com.poiboard.domain.MenuDTO;
 import com.poiboard.domain.UserDTO;
 import com.poiboard.mapper.MenuMapper;
 import com.poiboard.mapper.UserMapper;
+import com.poiboard.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 

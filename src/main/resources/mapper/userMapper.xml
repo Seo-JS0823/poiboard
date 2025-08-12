@@ -52,6 +52,16 @@
 			passwd = #{passwd}
 	</update>
 	
+	<!-- Update : point : 게시글 쓰면 포인트가 늘어난다. -->
+	<update id="contentPlusPoint">
+		UPDATE
+			users
+		SET
+			point = #{point}
+		WHERE
+			userid = #{userid}
+	</update>
+	
 	<!-- Delete : menuid -->
 	<delete id="deleteUser">
 		DELETE FROM

@@ -28,6 +28,12 @@ public interface UserMapper {
 	List<UserDTO> getUserList();
 	
 	/*
+	UPDATE(point) : contentPlusPoint
+	그 머시냐 게시글 쓰면 포인트 증가하는거
+	*/
+	void contentPlusPoint(UserDTO user);
+	
+	/*
 	UPDATE(passwd) : updatePasswd
 	비밀번호 변경
 	*/

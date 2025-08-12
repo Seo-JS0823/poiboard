@@ -59,6 +59,18 @@ main {
 				text-align: center;
 				border: 1px solid #0D6EFD;
 				padding: 8px;
+				
+				a {
+					text-decoration: none;
+					color: black;
+					
+					&:hover {
+						text-shadow:
+							0 0 1px #FFF,
+							0 0 3px #FFF;
+					}
+				}
+				
 			}
 		}
 		
