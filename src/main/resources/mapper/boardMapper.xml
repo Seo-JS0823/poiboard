@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poiboard.mapper.BoardMapper">
+	
+	<!-- select All : parameter (MenuDTO > String menuid) -->
+	<select id="getBoardList" resultType="com.poiboard.domain.BoardDTO">
+		SELECT
+			B.idx ,
+			M.menuname ,
+			B.title ,
+			B.writer ,
+			B.regdate ,
+			B.hit
+		FROM
+			board B, menus M
+		WHERE
+			B.menuid = M.menuid AND
+			B.menuid = #{menuid}
+	</select>
+	
+	<!-- select All : parameter (BoardDTO > String title) -->
+	<select id="searchTitle" resultType="com.poiboard.domain.BoardDTO" parameterType="java.lang.String">
+		SELECT
+			idx ,
+			title ,
+			writer ,
+			regdate ,
+			hit
+		FROM
+			board
+		WHERE
+			title Like CONCAT('%',#{search},'%')
+	</select>
+	
+	<!-- select 1 : title에 해당하는 board, user, menu까지 다 알려줄수 있게 -->
+	
+	
+	
+	<!-- insert 게시글 한 건 추가 -->
+	<insert id="insertBoard">
+		INSERT INTO board
+			(menuid, title, content, writer)
+		VALUES
+			(#{menuid}, #{title}, #{content}, #{writer})
+	</insert>
+
+	<!--  -->
+
+
+	<!--  -->
+	
+	
+</mapper>

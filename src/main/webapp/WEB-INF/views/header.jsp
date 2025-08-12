@@ -7,3 +7,4 @@
 		<a href="/board/list?menuid=${menu.menuid}">${menu.menuname}</a>
 	</c:forEach>
 </header>
+<hr>

@@ -96,3 +96,8 @@ header a:hover {
 * {
 	box-sizing: border-box;
 }
+hr {
+	height: 10px;
+	background-color: black;
+	border-style: none;
+}

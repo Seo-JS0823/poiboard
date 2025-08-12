@@ -206,7 +206,7 @@ formEl.addEventListener('submit', function(e) {
 	}
 });
 
-const menuSeeEl = document.getElementById('menuSee');
+const menuSeeEl = document.getElementById('[id=menuSee]');
 
 if(menuSeeEl.value.trim() !== '') {
 	alert('로그인을 해야 메뉴 목록을 확인할 수 있습니다.');

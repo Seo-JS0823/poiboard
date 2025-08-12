@@ -80,8 +80,8 @@ public class UserDTO {
 		return this.email;
 	}
 	
-	public int getPoint() {
-		return this.point;
+	public String getPoint() {
+		return String.format("%,d P", point);
 	}
 	
 	public Date getIndate() {

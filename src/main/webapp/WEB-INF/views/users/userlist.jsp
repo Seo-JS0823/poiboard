@@ -16,7 +16,7 @@
 	
 	.menulist-box {
 		width: 90%;
-		min-width: 1500px;
+		min-width: 1000px;
 	}
 </style>
 <body>

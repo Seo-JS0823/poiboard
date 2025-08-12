@@ -16,6 +16,7 @@
 </jsp:include>
 
 <!-- main 영역 -->
+<hr>
 <main>
 	<table class="menulist-box">
 		<colgroup>
