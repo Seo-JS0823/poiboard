@@ -41,7 +41,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping("/write")
-	public ModelAndView boardWrite(@RequestParam("menuid") String menuid, BoardDTO boardDto, HttpSession session) {
+	public ModelAndView boardWrite(String menuid, BoardDTO boardDto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		
 		/* 메뉴 리스트 */
@@ -69,7 +69,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String boardListForm(@RequestParam("menuid") String menuid, HttpSession session, Model model) {
+	public String boardListForm(@RequestParam("menuid") String menuid, int nowpage, HttpSession session, Model model) {
 		
 		UserDTO loginUser = (UserDTO) session.getAttribute("loginUser");
 		model.addAttribute("target", loginUser);
@@ -79,6 +79,13 @@ public class BoardController {
 		
 		MenuDTO menu = menuMapper.getMenu(menuid);
 		model.addAttribute("menu", menu.getMenuname());
+		model.addAttribute("menuid", menu.getMenuid());
+		
+		int pagings = boardMapper.pagingsCount(menuid);
+		
+		int startPage = boardService.startCount(nowpage, pagings);
+		
+		System.out.println("start: " + startPage);
 		
 		if(loginUser == null) {
 			session.invalidate();
@@ -88,7 +95,7 @@ public class BoardController {
 			return "login";
 		}
 		
-		List<BoardDTO> boards = boardMapper.getBoardList(menuid);
+		List<BoardDTO> boards = boardMapper.count(menuid, startPage, 10);
 		model.addAttribute("boards", boards);
 		
 		return "home/boardlist";

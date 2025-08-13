@@ -13,7 +13,7 @@ main {
 	
 	min-height: 2000px;
 	
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: #F5F5F5;
 	
 	border: 1px solid black;
 }
@@ -74,7 +74,7 @@ main {
 	border-radius: 12px;
 	
 	width: 100%;
-	border-style: none;
+	border: 1px solid black;
 	
 	padding: 10px;
 	

@@ -33,6 +33,19 @@
 			title Like CONCAT('%',#{search},'%')
 	</select>
 	
+	<!-- select All : 페이징 기법으로 게시글 목록 가져오기 -->
+	<select id="count" resultType="com.poiboard.domain.BoardDTO">
+		SELECT
+			idx, title, writer, regdate, hit
+		FROM
+			board
+		WHERE
+			menuid = #{menuid}
+		LIMIT
+			#{start}, #{recodeSize}
+	</select>
+	
+	
 	<!-- select 1 : idx에 해당하는 content 까지 검색 -->
 	<select id="getIdxContent" resultType="com.poiboard.domain.BoardDTO" parameterType="int">
 		SELECT
@@ -43,6 +56,15 @@
 			idx = #{idx}
 	</select>
 	
+	<!-- select 1 : 나누기 10한 페이징 수 가져오기 -->
+	<select id="pagingsCount" resultType="int">
+		SELECT
+			CEIL((COUNT(*)/10)) AS pagings
+		FROM
+			board
+		WHERE
+			menuid = #{menuid}
+	</select>
 	
 	<!-- insert 게시글 한 건 추가 -->
 	<insert id="insertBoard">

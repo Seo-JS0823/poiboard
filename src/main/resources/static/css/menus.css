@@ -15,7 +15,7 @@ main {
 	min-width: 800px;
 	max-width: 1200px;
 	padding: 65px;
-	background-color: rgba(0, 0, 0, 0.65);
+	background-color: #000;
 	border-radius: 20px;
 }
 .menuadd-box div {
@@ -98,7 +98,7 @@ main {
 	text-align: center;
 	font-size: 15px;
 	font-weight: bolder;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: #000;
 	border-collapse: collapse;
 }
 .menulist-box th {

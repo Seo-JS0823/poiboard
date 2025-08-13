@@ -19,6 +19,10 @@ public class BoardDTO {
 	private String menuname;
 	private String userid;
 	
+	/* 페이징 수 */
+	private int pagings;
+	
+	
 	public BoardDTO() {}
 	
 	public BoardDTO(int idx, String menuid, String title, String content, String writer, Timestamp regdate, int hit) {
@@ -79,6 +83,10 @@ public class BoardDTO {
 		return this.userid;
 	}
 	
+	public int getPagings() {
+		return this.pagings;
+	}
+	
 	/* Setter 영역 */
 	public void setIdx(int idx) {
 		this.idx = idx;
@@ -118,6 +126,10 @@ public class BoardDTO {
 	
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	
+	public void setPagings(int pagings) {
+		this.pagings = pagings;
 	}
 	
 	/* 동일성 검사 */

@@ -18,26 +18,12 @@
 
 <!-- Main 영역 -->
 <main>
-	<div class="container-rside">
-		<div class="rside-user">
-			<c:if test="${not empty target}">
-				<div><label>아이디</label>${target.userid}</div>
-				<div><label>닉네임</label>${target.username}</div>
-				<div><label>이메일</label>${target.email}</div>
-				<div><label>point</label>${target.point}</div>
-			</c:if>
-			<div>
-				<a href="/logout">로그아웃</a>
-			</div>
-		</div>
-		<div class="rside-content">
-			<label>이달의 우수 사진</label>
-			<img src="/images/image009.jpg"/>
-			<img src="/images/image010.jpg"/>
-			<img src="/images/image012.jpg"/>
-			<img src="/images/image003.jpg"/>
-		</div>
-	</div>
+
+<!-- Left Side 영역 -->
+<jsp:include page="../lside.jsp">
+	<jsp:param name="target" value="${target}"/>
+</jsp:include>
+
 	<div class="content-main-box">
 		<c:if test="${not empty content}">
 			<div>제목 : ${content.title}</div>

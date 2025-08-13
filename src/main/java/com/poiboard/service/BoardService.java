@@ -10,6 +10,21 @@ public class BoardService {
 		return hit + 1;
 	}
     
+	public int startCount(int nowpage, int pagings) {
+		
+		int start = 0;
+		
+		for(int i = 1; i <= pagings ; i++) {
+			if(nowpage == i) {
+				
+				break;
+			}
+			
+			start += 10;
+		}
+		
+		return start;
+	}
     
     
 }

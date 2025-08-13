@@ -7,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.poiboard.domain.MenuDTO;
 import com.poiboard.domain.UserDTO;
 import com.poiboard.mapper.MenuMapper;
 import com.poiboard.mapper.UserMapper;
-import com.poiboard.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -87,5 +87,31 @@ public class UserController {
 		/* 로그아웃 하면 보여줄 루트 컨텍스트 */
 		return "redirect:/";
 	}
+	
+	/* 유저 정보 변경 폼 보여주기 */
+	@GetMapping("/updateUserForm")
+	public ModelAndView updateUser(HttpSession session, UserDTO user) {
+		ModelAndView mav = new ModelAndView();
+		
+		/* 유저 검색 */
+		UserDTO target = (UserDTO) session.getAttribute("loginUser");
+		if(target == null) {
+			
+			mav.setViewName("error/access");
+			return mav;
+		}
+		mav.addObject("target", target);
+		
+		
+		/* 메뉴 리스트 */
+		List<MenuDTO> menus = menuMapper.getMenuList();
+		mav.addObject("menus", menus);
+		
+		/* 보여줄 페이지 */
+		mav.setViewName("users/update");
+		return mav;
+	}
+	
+	/* 유저 정보 변경 로직 */
 	
 }
