@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.poiboard.mapper.BoardPagingMapper">
+	<select id="count">
+		SELECT
+			COUNT(*) AS CNT
+		FROM
+			board
+		WHERE
+			menuid = #{menuid}
+	</select>
+	
+	<select id="getBoardPagingList" resultType="com.poiboard.domain.BoardDTO">
+		SELECT
+			B.idx ,
+			M.menuname ,
+			B.title ,
+			B.writer ,
+			B.regdate ,
+			B.hit
+		FROM
+			board B, menus M
+		WHERE
+			B.menuid = M.menuid AND
+			B.menuid = #{menuid}
+		LIMIT
+			#{offset}, #{recordSize}
+			
+	</select>
+	
+	
+</mapper>

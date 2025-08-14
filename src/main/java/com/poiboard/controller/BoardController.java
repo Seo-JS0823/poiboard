@@ -1,5 +1,6 @@
 package com.poiboard.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.poiboard.domain.BoardDTO;
 import com.poiboard.domain.MenuDTO;
+import com.poiboard.domain.SearchDTO;
 import com.poiboard.domain.UserDTO;
 import com.poiboard.mapper.BoardMapper;
+import com.poiboard.mapper.BoardPagingMapper;
 import com.poiboard.mapper.MenuMapper;
 import com.poiboard.mapper.UserMapper;
 import com.poiboard.service.BoardService;
+import com.poiboard.service.PageResponse;
+import com.poiboard.service.Pagination;
 import com.poiboard.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +32,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	@Autowired
+	private BoardPagingMapper boardPagingMapper;
 	
 	@Autowired
 	private MenuMapper menuMapper;
@@ -70,6 +78,9 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public String boardListForm(@RequestParam("menuid") String menuid, int nowpage, HttpSession session, Model model) {
+		if(nowpage <= 0) {
+			nowpage = 1;
+		}
 		
 		UserDTO loginUser = (UserDTO) session.getAttribute("loginUser");
 		model.addAttribute("target", loginUser);
@@ -81,12 +92,6 @@ public class BoardController {
 		model.addAttribute("menu", menu.getMenuname());
 		model.addAttribute("menuid", menu.getMenuid());
 		
-		int pagings = boardMapper.pagingsCount(menuid);
-		
-		int startPage = boardService.startCount(nowpage, pagings);
-		
-		System.out.println("start: " + startPage);
-		
 		if(loginUser == null) {
 			session.invalidate();
 			
@@ -94,9 +99,36 @@ public class BoardController {
 			
 			return "login";
 		}
+		/* 전체 레코드 개수 */
+		int count = boardPagingMapper.count(menu);
 		
-		List<BoardDTO> boards = boardMapper.count(menuid, startPage, 10);
+		/* nowpage로 조회한 결과를 담아놓을 객체 */
+		PageResponse<BoardDTO> response = null;
+		if(count < 1) {
+			new PageResponse<>(Collections.emptyList(), null);
+		}
+		
+		/* 페이징을 위한 초기설정 */
+		SearchDTO searchDto = new SearchDTO();
+		searchDto.setPage(nowpage);
+		searchDto.setRecordSize(30);
+		searchDto.setPageSize(7);
+		
+		/* Pagination 설정 */
+		Pagination pagination = new Pagination(count, searchDto);
+		searchDto.setPagination(pagination);
+		
+		int offset = searchDto.getOffset();
+		int recordSize = searchDto.getRecordSize();
+		
+		List<BoardDTO> boards = boardPagingMapper.getBoardPagingList(menuid, offset, recordSize);
+		
+		response = new PageResponse<>(boards, pagination);
+		
+		model.addAttribute("response", response);
+		model.addAttribute("nowpage", searchDto.getPage());
 		model.addAttribute("boards", boards);
+		model.addAttribute("pageSize", searchDto.getPageSize());
 		
 		return "home/boardlist";
 	}

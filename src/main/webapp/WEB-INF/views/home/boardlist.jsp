@@ -32,13 +32,22 @@
 			<div>
 				<table class="paging">
 					<tr>
-							<td><a href="/board/list?nowpage=1&menuid=${menuid}">⏮</a></td>
-							<td><a href="/board/list?nowpage=1&menuid=${menuid}">⏪</a></td>
-						<c:forEach var="pagenum" begin="1" end="10">
-							<td><a href="/board/list?nowpage=${pagenum}&menuid=${menuid}">${pagenum}</a></td>
-						</c:forEach>
-							<td><a href="/board/list?nowpage=1&menuid=${menuid}">⏩</a></td>
-							<td><a href="/board/list?nowpage=1&menuid=${menuid}">⏭</a></td>
+					<c:set var="prev" value="${response.pagination.existPrevPage}"/>
+					<c:set var="next" value="${response.pagination.existNextPage}"/>
+					<c:set var="start" value="${response.pagination.startPage}"/>
+					<c:set var="end" value="${response.pagination.endPage}"/>
+					<c:set var="totalPage" value="${response.pagination.totalPageCount}"/>
+					<c:if test="${prev == true}">
+						<td><a href="/board/list?nowpage=1&menuid=${menuid}">⏮</a></td>
+						<td><a href="/board/list?nowpage=${start - 1}&menuid=${menuid}">⏪</a></td>
+					</c:if>
+					<c:forEach var="page" begin="${start}" end="${end}">
+						<td><a href="/board/list?nowpage=${page}&menuid=${menuid}">${page}</a></td>
+					</c:forEach>
+					<c:if test="${next == true}">
+						<td><a href="/board/list?nowpage=${end + 1}&menuid=${menuid}">⏩</a></td>
+						<td><a href="/board/list?nowpage=${totalPage}&menuid=${menuid}">⏭</a></td>
+					</c:if>
 					</tr> 
 				</table>
 			</div>

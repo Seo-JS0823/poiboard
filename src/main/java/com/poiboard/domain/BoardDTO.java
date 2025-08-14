@@ -19,9 +19,9 @@ public class BoardDTO {
 	private String menuname;
 	private String userid;
 	
-	/* 페이징 수 */
-	private int pagings;
-	
+	/* 페이징 관련 */
+	private int startPage;
+	private int endPage;
 	
 	public BoardDTO() {}
 	
@@ -83,8 +83,12 @@ public class BoardDTO {
 		return this.userid;
 	}
 	
-	public int getPagings() {
-		return this.pagings;
+	public int getStartPage() {
+		return this.startPage;
+	}
+	
+	public int getEndPage() {
+		return this.endPage;
 	}
 	
 	/* Setter 영역 */
@@ -128,8 +132,12 @@ public class BoardDTO {
 		this.userid = userid;
 	}
 	
-	public void setPagings(int pagings) {
-		this.pagings = pagings;
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
 	}
 	
 	/* 동일성 검사 */
